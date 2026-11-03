@@ -1,0 +1,56 @@
+{
+  "name": "howlong",
+  "version": "0.1.0",
+  "description": "Calibrated time estimates for coding-agent work, learned from your own finished sessions.",
+  "type": "module",
+  "license": "MIT",
+  "author": "kd-011",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kd-011/howlong.git"
+  },
+  "keywords": [
+    "estimate",
+    "forecast",
+    "coding-agent",
+    "mcp",
+    "claude-code",
+    "backtest",
+    "reference-class"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "bin": {
+    "howlong": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "fixtures": "npm run build && node dist/cli.js demo fixtures",
+    "verify:mcp": "npm run build && node scripts/verify-mcp.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
